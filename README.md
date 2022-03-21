@@ -13,110 +13,213 @@ Support Alchemy, Infura and web3 bottom layer upgrade all nodes of EIP-1559 prop
 If you like it, starred it
 
 Example:
-
+```json
 {
-    "avgFill": "49.13%",
-    "avgGasFee": 23,
+    "avgFill": "43.98%",
+    "avgGasFee": 18,
+    "fastGasFee": 22,
+    "slowGasFee": 14,
     "gasList": [
         {
             "reward": [
+                1,
                 2,
-                2,
-                3
+                38
             ],
-            "blockNumber": 14428857,
-            "baseFeePerGas": 24.91353477,
-            "gasUsedRatio": "65.49%"
+            "blockNumber": 14429619,
+            "baseFeePerGas": 22.38930059,
+            "gasUsedRatio": "19.28%"
+        },
+        {
+            "reward": [
+                0,
+                2,
+                29
+            ],
+            "blockNumber": 14429620,
+            "baseFeePerGas": 20.66971845,
+            "gasUsedRatio": "84.64%"
+        },
+        {
+            "reward": [
+                1,
+                3,
+                10
+            ],
+            "blockNumber": 14429621,
+            "baseFeePerGas": 22.45953658,
+            "gasUsedRatio": "4.61%"
         },
         {
             "reward": [
                 1,
                 2,
+                28
+            ],
+            "blockNumber": 14429622,
+            "baseFeePerGas": 19.91086431,
+            "gasUsedRatio": "18.9%"
+        },
+        {
+            "reward": [
+                1,
+                2,
+                12
+            ],
+            "blockNumber": 14429623,
+            "baseFeePerGas": 18.36272359,
+            "gasUsedRatio": "13.93%"
+        },
+        {
+            "reward": [
+                1,
+                1,
                 5
             ],
-            "blockNumber": 14428858,
-            "baseFeePerGas": 25.87841566,
-            "gasUsedRatio": "13.81%"
+            "blockNumber": 14429624,
+            "baseFeePerGas": 16.70701746,
+            "gasUsedRatio": "62.36%"
+        },
+        {
+            "reward": [
+                2,
+                3,
+                31
+            ],
+            "blockNumber": 14429625,
+            "baseFeePerGas": 17.22336955,
+            "gasUsedRatio": "11.44%"
+        },
+        {
+            "reward": [
+                2,
+                3,
+                32
+            ],
+            "blockNumber": 14429626,
+            "baseFeePerGas": 15.56315614,
+            "gasUsedRatio": "20.03%"
+        },
+        {
+            "reward": [
+                1,
+                2,
+                10
+            ],
+            "blockNumber": 14429627,
+            "baseFeePerGas": 14.39713478,
+            "gasUsedRatio": "99.94%"
+        },
+        {
+            "reward": [
+                1,
+                2,
+                32
+            ],
+            "blockNumber": 14429628,
+            "baseFeePerGas": 16.19477678,
+            "gasUsedRatio": "74.42%"
+        },
+        {
+            "reward": [
+                1,
+                2,
+                22
+            ],
+            "blockNumber": 14429629,
+            "baseFeePerGas": 17.18358802,
+            "gasUsedRatio": "36.57%"
+        },
+        {
+            "reward": [
+                1,
+                2,
+                13
+            ],
+            "blockNumber": 14429630,
+            "baseFeePerGas": 16.60678423,
+            "gasUsedRatio": "30.77%"
+        },
+        {
+            "reward": [
+                0,
+                2,
+                57
+            ],
+            "blockNumber": 14429631,
+            "baseFeePerGas": 15.80839661,
+            "gasUsedRatio": "88.54%"
+        },
+        {
+            "reward": [
+                0,
+                0,
+                0
+            ],
+            "blockNumber": 14429632,
+            "baseFeePerGas": 17.33155169,
+            "gasUsedRatio": "0%"
         },
         {
             "reward": [
                 2,
                 2,
-                2
+                40
             ],
-            "blockNumber": 14428859,
-            "baseFeePerGas": 23.5369551,
-            "gasUsedRatio": "8.69%"
-        },
-        {
-            "reward": [
-                2,
-                2,
-                3
-            ],
-            "blockNumber": 14428860,
-            "baseFeePerGas": 21.10628176,
+            "blockNumber": 14429633,
+            "baseFeePerGas": 15.16510773,
             "gasUsedRatio": "99.98%"
         },
         {
             "reward": [
-                1,
+                0,
                 2,
-                2
+                27
             ],
-            "blockNumber": 14428861,
-            "baseFeePerGas": 23.74332382,
-            "gasUsedRatio": "36.59%"
+            "blockNumber": 14429634,
+            "baseFeePerGas": 17.05999125,
+            "gasUsedRatio": "87.9%"
         },
         {
             "reward": [
+                0,
                 2,
-                2,
-                3
+                35
             ],
-            "blockNumber": 14428862,
-            "baseFeePerGas": 22.94735291,
-            "gasUsedRatio": "6.76%"
-        },
-        {
-            "reward": [
-                2,
-                2,
-                2
-            ],
-            "blockNumber": 14428863,
-            "baseFeePerGas": 20.46649007,
-            "gasUsedRatio": "93.44%"
-        },
-        {
-            "reward": [
-                2,
-                2,
-                2
-            ],
-            "blockNumber": 14428864,
-            "baseFeePerGas": 22.68935958,
-            "gasUsedRatio": "84.99%"
+            "blockNumber": 14429635,
+            "baseFeePerGas": 18.67633025,
+            "gasUsedRatio": "52.63%"
         },
         {
             "reward": [
                 1,
                 2,
-                3
+                89
             ],
-            "blockNumber": 14428865,
-            "baseFeePerGas": 24.67429893,
-            "gasUsedRatio": "6.81%"
+            "blockNumber": 14429636,
+            "baseFeePerGas": 18.79894448,
+            "gasUsedRatio": "44.36%"
         },
         {
             "reward": [
+                0,
                 2,
-                2,
-                2
+                12
             ],
-            "blockNumber": 14428866,
-            "baseFeePerGas": 22.01029969,
-            "gasUsedRatio": "74.72%"
+            "blockNumber": 14429637,
+            "baseFeePerGas": 18.53394714,
+            "gasUsedRatio": "29.24%"
+        },
+        {
+            "reward": [
+                0,
+                0,
+                0
+            ],
+            "blockNumber": 14429638,
+            "baseFeePerGas": 17.57200636,
+            "gasUsedRatio": "0%"
         }
     ]
 }
+```
