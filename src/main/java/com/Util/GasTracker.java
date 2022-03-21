@@ -4,20 +4,20 @@ import cn.hutool.http.HttpRequest;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import org.web3j.protocol.Web3j;
+import org.web3j.protocol.http.HttpService;
 import org.web3j.utils.Numeric;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.RoundingMode;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.function.ToDoubleFunction;
 
 import static java.math.BigDecimal.ROUND_DOWN;
 
 /**
- * 以太坊Gas追踪器 (Ethereum Gas Tracker)
+ * 以太坊Gas追踪器
  *
  * @author justin
  * @create 2022-03-21 17-08
@@ -27,19 +27,25 @@ public class GasTracker {
     //public static String ALCHEMYURL = "https://eth-mainnet.alchemyapi.io/v2/API-KEY";
     //INFURA
     public static String INFURAURL = "https://mainnet.infura.io/v3/API-KEY";
+    public final static Web3j web3j = Web3j.build(new HttpService(INFURAURL));
     //gwei单位(gwei unit)
     public static BigDecimal GWEI = new BigDecimal("1000000000");
     public static BigDecimal PERCENTAGE = new BigDecimal("100");
     //历史范围区块数(The number of blocks for which to fetch historical fees. Can be an integer or a hex string.)
-    public static Integer BLOCKRANGE = 10;
+    public static Integer BLOCKRANGE = 20;
     //开始搜索的块,从当前往后看 可以是16进制字符串或预定义的块字符串 例如:"latest" (The block to start the search. The result will look backwards from here. Can be a hex string or a predefined block string e.g. "latest".)
-    public static String STARTINGBLOCK = "latest";
+    public static String STARTINGBLOCK = "pending";
     //一组数字,用于定义每个区块查看的奖励值的百分位数 25%,50%,75% ((Optional) An array of numbers that define which percentiles of reward values you want to see for each block.)
-    public static Object[] PERCENTILES = {25, 50, 75};
+    public static Object[] PERCENTILES = {1, 50, 99};
     //method
     public static String ETH_FEEHISTORY = "eth_feeHistory";
 
     public static void main(String[] args) {
+        JSONObject gasTrackerList = getGasTrackerList();
+        System.out.println(gasTrackerList.toJSONString());
+    }
+
+    public static JSONObject getGasTrackerList() {
         Object[] params = {BLOCKRANGE, STARTINGBLOCK, PERCENTILES};
         Map map = setMap(ETH_FEEHISTORY, params);
         String jsonString = JSON.toJSONString(map);
@@ -87,7 +93,15 @@ public class GasTracker {
         responseResultJsonObject.put("gasList", jsonArray);
         responseResultJsonObject.put("avgFill", avgFill.stripTrailingZeros().toPlainString() + "%");
         responseResultJsonObject.put("avgGasFee", avgGasFee);
-        System.out.println(responseResultJsonObject);
+
+        List<GasTrackerDTO> castlist = JSONObject.parseArray(jsonArray.toJSONString(), GasTrackerDTO.class);
+        double max = castlist.stream().mapToDouble(GasTrackerDTO -> GasTrackerDTO.getBaseFeePerGas().doubleValue()).max().getAsDouble();
+        double min = castlist.stream().mapToDouble(GasTrackerDTO -> GasTrackerDTO.getBaseFeePerGas().doubleValue()).min().getAsDouble();
+        BigDecimal fastGasFee = new BigDecimal(max).setScale(0, RoundingMode.HALF_UP);
+        BigDecimal slowGasFee = new BigDecimal(min).setScale(0, RoundingMode.HALF_UP);
+        responseResultJsonObject.put("fastGasFee", fastGasFee);
+        responseResultJsonObject.put("slowGasFee", slowGasFee);
+        return responseResultJsonObject;
     }
 
     public static Map setMap(String method, Object params) {
