@@ -7,3 +7,7 @@ Building an Ethereum Gas Tracker on Java
 支持Alchemy,Infura及web3底层升级了EIP-1559提案的所有节点
 
 Support Alchemy, Infura and web3 bottom layer upgrade all nodes of EIP-1559 proposal
+
+喜欢的帮忙点个starred
+
+If you like it, starred it
